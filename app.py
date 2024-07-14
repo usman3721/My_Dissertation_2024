@@ -179,7 +179,7 @@ def main():
     user_avatar_style = "identicon"
     user_seed = "12345"
 
-    bot_logo_base64 = image_to_base64("Images\pic1.jpg")
+    bot_logo_base64 = image_to_base64("Images/pic1.jpg")
     bot_logo_html1 = f"data:image/png;base64,{bot_logo_base64}"
 
 
