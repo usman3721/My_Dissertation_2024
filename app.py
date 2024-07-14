@@ -1,69 +1,4 @@
 
-# def get_gemini_response(question):
-#     prompt = """You are an AI Assistant specializing in answering all electrical and electronics engineering questions. You are used by professionals in the field and laymans. Be explicit, informative, and explain technical concepts in a clear manner.
-#     If Any question apart electrical adn electronics engineering is asked kindly say "I'm Sorry i  Answer electrical and electronics engineering related Questions Only.
-#     You alway put the references
-
- 
-#     """
-
-#     response = chat.send_message(prompt+str(question), stream=True)
-#     return response
-
-
-
-# # from openai import 
-# c1, c2 = st.columns([4, 7])
-# from PIL import Image
-
-
-# # with st.sidebar:
-# #     openai_api_key = st.text_input("OpenAI API Key", key="chatbot_api_key", type="password")
-# #     "[Get an OpenAI API key](https://platform.openai.com/account/api-keys)"
-
-# # c1.image(Image.open('download.png'))
-
-# st.title("💬 Electrical & Electronics Enggineering  Chatbot")
-# if "messages" not in st.session_state:
-#     st.session_state["messages"] = [{"role": "assistant", "content": "Ask Me Anything Electrican And Electronnics"}]
-
-# for msg in st.session_state.messages:
-#     st.chat_message(msg["role"]).write(msg["content"])
-
-
-# def clear_chat_history():
-#     st.session_state.messages = [{"role": "assistant", "content": "How may I assist you today?"}]
-# st.sidebar.button('Clear Chat History', on_click=clear_chat_history)
-
-
-# if prompt := st.chat_input():
-#     history=[]
-    
-#     st.info(prompt)
-#     with st.sidebar:
-#         st.header("Chat History (Questions)")
-#         # for question in (item[1] for item in st.session_state['chat_history']):  # Extract only questions
-#         st.write(prompt)
-#     response = get_gemini_response(prompt)
-
-#     # Add user query and response to session state chat history
-#     st.session_state['chat_history'].append(("You", prompt))
-
-#     for chunk in response:
-#         st.write(chunk.text)
-#         st.session_state['chat_history'].append(("Bot", chunk.text))
-#     # if not openai_api_key:
-
-
-
-
-    # c2.info("Please add your OpenAI API key to continue.")
-   
-
-
-
-
-
 import streamlit as st
 from PIL import Image
 from dotenv import load_dotenv
@@ -91,7 +26,8 @@ from PIL import Image
 import base64
 from io import BytesIO
 
-print(genai.configure(api_key=os.getenv("GOOGLE_API_KEY")))
+# print(genai.configure(api_key=os.getenv("GOOGLE_API_KEY")))
+print(genai.configure(api_key=st.secrets.GOOGLE_API_KEY))
 
 model = genai.GenerativeModel("gemini-1.5-flash-latest")
 chat = model.start_chat(history=[])
@@ -234,22 +170,6 @@ def main():
 
     chat_container = st.container()
     input_container = st.container()
-
-    # with chat_container:
-    #     # for msg in st.session_state.messages:
-    #     for i, msg in enumerate(st.session_state.messages):
-
-    #         if msg["role"] == "user":
-    #             # st.markdown(f"<div style='text-align: left; color: black; bac kground-color: #90EE90; padding: 10px; border-radius: 10px; margin: 10px 0;'>{msg['content']}</div>", unsafe_allow_html=True)
-    #             # st.markdown(f"<div style='text-align: right; color: black; background-color: #d3d3d3; padding: 10px; border-radius: 10px; margin: 10px 0;'>{msg['content']}</div>", unsafe_allow_html=True)
-    #             st.markdown(f"<div id='{i}' style='text-align: left; color: black; background-color: #d3d3d3; padding: 10px; border-radius: 10px; margin: 10px 0;'>{msg['content']}</div>", unsafe_allow_html=True)
-
-    #         else:
-    #             # st.markdown(f"<div style='text-align: left; color: black; background-color: #90EE90; padding: 10px; border-radius: 10px; margin: 10px 0;'>{msg['content']}</div>", unsafe_allow_html=True)
-    #             # st.markdown(f"<div style='text-align: left; color: white; background-color: #1a73e8; padding: 10px; border-radius: 10px; margin: 10px 0;'>{msg['content']}</div>", unsafe_allow_html=True)
-    #             st.markdown(f"<div id='{i}' style='text-align: left; color: black; background-color: #f5f7f7; padding: 10px; border-radius: 10px; margin: 10px 0;'>{msg['content']}</div>", unsafe_allow_html=True)
-
-
 
 
 
