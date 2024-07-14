@@ -26,8 +26,8 @@ from PIL import Image
 import base64
 from io import BytesIO
 
-# print(genai.configure(api_key=os.getenv("GOOGLE_API_KEY")))
-print(genai.configure(api_key=st.secrets.GOOGLE_API_KEY))
+print(genai.configure(api_key=os.getenv("GOOGLE_API_KEY")))
+# print(genai.configure(api_key=st.secrets.GOOGLE_API_KEY))
 
 model = genai.GenerativeModel("gemini-1.5-flash-latest")
 chat = model.start_chat(history=[])
